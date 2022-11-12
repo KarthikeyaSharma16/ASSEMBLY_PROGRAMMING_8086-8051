@@ -1,0 +1,19 @@
+MAIN: CLR P1.2
+      ACALL DELAY1
+      SETB P1.2
+      ACALL DELAY2
+      SJMP MAIN
+DELAY1: MOV TMOD, #01H
+        MOV TH0, #0FFH
+        MOV TL0, #0C1H
+        MOV TCON, #10H
+        SJMP NEXT
+DELAY2: MOV TMOD, #01H
+        MOV TH0, #0FFH
+        MOV TL0, #45H
+        MOV TCON, #10H
+        SJMP NEXT
+NEXT: JNB TF0, NEXT
+      CLR TR0
+      CLR TF0
+      RET

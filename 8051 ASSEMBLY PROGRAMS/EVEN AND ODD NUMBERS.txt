@@ -1,0 +1,20 @@
+MOV R0, #30H
+MOV A, #00H
+MOV R7, #0AH
+STORE_NUM: MOV @R0, A
+           INC A
+           INC R0
+           DJNZ R7, STORE_NUM
+MOV R0, #30H
+MOV R3, #00H ;EVEN COUNT
+MOV R4, #00H ;ODD COUNT
+MOV R7, #0AH
+COUNT: MOV A, @R0
+       RRC A
+       JC ODD
+       INC R3
+       SJMP NEXT
+ODD:   INC R4
+NEXT:  INC R0
+       DJNZ R7, COUNT
+HERE:  SJMP HERE

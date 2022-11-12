@@ -1,0 +1,13 @@
+MOV R2, #00H ;FIRST NUMBER
+MOV R3, #01H ;SECOND NUMBER
+MOV R0, #32H
+MOV R7, #08H ;COUNT
+FIBO: MOV A, R2
+      ADD A, R3
+      MOV @R0, A
+      MOV B, R3
+      MOV R2, B
+      MOV R3, A
+      INC R0
+      DJNZ R7, FIBO
+HERE: SJMP HERE
